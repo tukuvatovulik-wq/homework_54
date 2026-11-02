@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+{% block title %}Категории{% endblock %}
+{% block content %}
+<h2>Список категорий</h2>
+{% for category in categories %}
+    <div class="item">
+        {{ category.name }}
+        <a href="{% url 'category_edit' category.id %}">Edit</a>
+        <form method="post" action="{% url 'category_delete' category.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+{% empty %}
+    <p>Категорий пока нет.</p>
+{% endfor %}
+{% endblock %}

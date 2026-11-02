@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+{% block title %}Товары{% endblock %}
+{% block content %}
+<h2>Список товаров</h2>
+{% for product in products %}
+    <div class="item">
+        <h3>{{ product.name }}</h3>
+        <p>Цена: {{ product.price }}</p>
+        <p>Категория: {{ product.category.name }}</p>
+        <a href="{% url 'product_detail' product.id %}">Подробнее</a>
+        <a href="{% url 'product_edit' product.id %}">Edit product</a>
+    </div>
+{% empty %}
+    <p>Товаров пока нет.</p>
+{% endfor %}
+{% endblock %}

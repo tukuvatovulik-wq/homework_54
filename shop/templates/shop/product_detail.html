@@ -1,0 +1,11 @@
+{% extends "shop/base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+<h2>{{ product.name }}</h2>
+<p>Цена: {{ product.price }}</p>
+<p>Категория: {{ product.category.name }}</p>
+<img src="{{ product.image }}" alt="{{ product.name }}">
+<p>{{ product.description }}</p>
+<a href="{% url 'product_edit' product.id %}">Edit product</a>
+<a href="{% url 'products' %}">Назад к товарам</a>
+{% endblock %}
